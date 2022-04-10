@@ -1,0 +1,24 @@
+<html>
+    <title>
+
+        {{title}}
+    </title>
+    <body>
+        <h1>
+            Hi Node User! Enter your number string below  
+        </h1>
+        <form action="/" method="post">
+            Enter Number : <input type="text" id = "input" name="mydata">
+        <input type="submit">
+
+        </form>
+        
+        {{#if result}}
+        <div>
+            
+            {{result}} will be here ....... in a while...
+        
+        </div>
+        {{/if}}
+    </body>
+</html>
