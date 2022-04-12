@@ -1,1 +1,1 @@
-# Get All combos of the given set of Numbers
+# Get All combos of the given string of digits
