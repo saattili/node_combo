@@ -1,5 +1,6 @@
 const path = require("path");
 const { spawn } = require("child_process");
+const { toUnicode } = require("punycode");
 
 
 
@@ -22,24 +23,20 @@ function calculate(req, res) {
         numStr = min.toString();
         numArr = numStr.split('');
 
-        var flag = 0;
-        for (let val = 0; val < arr.length; val++) {
-            console.log(`checking ${arr[val]}   with ${numArr}`)
-            for (let value = 0; value < numArr.length; value++) {
-                if (!(arr[val] == numArr[value])) {
-                    flag = 1;
-                    break;
-
-                }
+        var flag = 1;
+        for (val of arr) {
+            if (contain(val, numArr)) {
 
             }
-            if (flag === 1)
+            else {
+                flag = 0;
                 break;
-
-
+            }
         }
-        if (flag === 0) {
+
+        if (flag === 1) {
             combos.push(min);
+
         }
 
 
@@ -52,6 +49,19 @@ function calculate(req, res) {
 
 
     });
+
+
+
+
+}
+
+function contain(val, arr) {
+    for (item of arr) {
+        if (Number(val) === Number(item)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 //res.sendFile(path.join(__dirname,'..','..','views','index.hbs'));

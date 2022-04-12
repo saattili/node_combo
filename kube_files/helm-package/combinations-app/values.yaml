@@ -1,0 +1,7 @@
+deployment:
+  image: "madhavattili/num-combo-node"
+  tag: "latest"
+ingress:
+  spec:
+    rules:
+      host: "charcombinations.com"

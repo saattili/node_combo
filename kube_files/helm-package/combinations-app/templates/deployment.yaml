@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: string-combos-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: string-combos-pod
+  template:
+    metadata:
+      labels:
+        app: string-combos-pod
+    spec:
+      containers:
+      - name: num-combo-node
+        image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
+        ports:
+        - containerPort: 8080

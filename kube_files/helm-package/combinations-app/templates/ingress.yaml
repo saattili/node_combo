@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: scombo-ingress
+  labels:
+    name: scombo-ingress
+spec:
+  rules:
+  - host: charcombinations.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: scombo-svc
+            port: 
+              number: 80
